@@ -1,0 +1,32 @@
+// 8-3 рек
+//даны первый член и разность арифметической прогресии.
+//написать рекурсивную функцию для нахождения n-го члена и суммы n первых членов прогрессии
+#include<iostream>
+using namespace std;
+int rek(int n1, int b, int n)
+{
+	if (n == 1)
+		return n1;
+	else if (n == 2)
+		return (n1 + b);
+	else
+		return rek(n1 + b, b, n - 1);
+}
+int sum(int n1, int b, int n)
+{
+	if (rek(n1 + b, b, n - 1) == n1)
+		return n1;
+	else
+		return rek(n1 + b, b, n - 1) + rek(n1, b, n);
+
+}
+int main()
+{
+	int n1, b;
+	int n;
+	cin >> n;
+	// n - kolvo chlenov
+	cin >> n1 >> b;
+	cout << rek(n1, b, n) << endl;
+	cout << sum(n1, b, n);
+}
